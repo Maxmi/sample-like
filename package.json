@@ -6,18 +6,23 @@
     "node": "6.12.x"
   },
   "scripts": {
-    "db:create": "createdb vinyl",
-    "db:drop": "dropdb vinyl",
-    "db:schema": "psql -d vinyl < src/data/schema.sql",
-    "db:seed": "psql -d vinyl < src/data/albums.sql",
+    "db:create": "createdb records",
+    "db:drop": "dropdb records",
+    "db:schema": "psql -d records < src/data/schema.sql",
+    "db:seed": "psql -d records < src/data/albums.sql",
+    "test_db:create": "createdb records_test",
+    "test_db:drop": "dropdb records_test",
+    "test_db:schema": "psql -d records_test < src/data/schema.sql",
+    "test_db:seed": "psql -d records_test < src/data/albums.sql",
     "start": "nodemon src/index.js --exec babel-node --presets es2015,stage-2",
     "lint": "./node_modules/.bin/eslint src",
-    "test": "mocha --require babel-core/register test/**/*.test.js"
+    "test": "export NODE_ENV=test && npm run test_db:drop && npm run test_db:create && npm run test_db:schema && npm run test_db:seed && mocha --require babel-core/register test/**/*.test.js"
   },
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
+    "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",

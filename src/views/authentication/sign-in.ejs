@@ -1,5 +1,10 @@
 <% include ../partials/header %>
 
-<!-- insert code here -->
+<form class="" action="/sign-in" method="post">
+  <input type="email" name="email" placeholder="your email">
+  <input type="password" name="password" placeholder="your password">
+  <button type="submit" name="button">Sign In</button>
+</form>
+<%= error %>
 
 <% include ../partials/footer %>

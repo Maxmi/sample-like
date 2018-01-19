@@ -1,6 +1,12 @@
 <% include ../partials/header %>
 
-<h1><%= album.title %></h1>
-<em>by <%= album.artist %></em>
+<div id="album" data=<%= album.id %>>
+  <h1><%= album.title %></h1>
+  <em>by <%= album.artist %></em>
+</div>
+
+
+<button id="likeBtn" type="submit" class="">Like</button>
+<span id="count"><%= likes %></span>
 
 <% include ../partials/footer %>
